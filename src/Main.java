@@ -1,5 +1,9 @@
+import java.util.Arrays;
+
+import static java.util.Arrays.fill;
+
 public class Main {
-    static Employee[] employees = new Employee[10];
+    private static Employee[] employees = new Employee[10];
     public static void main(String[] args) {
         Employee pushkin = new Employee("Пушкин Александр Сергеевич ", 1, 60000);
         Employee lermontov = new Employee("Лермонтов Михаил Юрьевич ", 1, 70000);
@@ -21,40 +25,54 @@ public class Main {
         employees[7] = brodskiy;
         employees[8] = bykov;
         employees[9] = morgenstern;
-        getAllEmployee();
-        getMinAndMaxSalary();
-        getAverageSalary();
-        getFioEmployee();
+        System.out.println("Полная информация о сотрудниках : " + getAllEmployee());
+        System.out.println("Cотрудник с минимальной зарплатой - " + findMinSalary());
+        System.out.println("Cотрудник с максимальной зарплатой - " + findMaxSalary());
+        System.out.println("Средняя зарплата по компании - " + getAverageSalary());
+        System.out.println("Список всех имен в компании : " + getFioEmployee());
     }
-    static void getAllEmployee(){
+    public static String getAllEmployee(){
+        Employee list[] = new Employee[employees.length];
         for (int i = 0; i < employees.length; i++){
-            System.out.println(employees[i]);
+            list[i] = employees[i];
         }
+        return Arrays.toString(list);
     }
-    static void getMinAndMaxSalary(){
-        int min = employees[0].salary;
-        int max = employees[0].salary;
-        for (int i = 0; i < employees.length; i++){
-            if (employees[i].salary < min){
-                min = employees[i].salary;
-            } else if (employees[i].salary > max) {
-                max = employees[i].salary;
+    public static Employee findMinSalary() {
+        Employee findMinSalary = employees[0];
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getSalary() < findMinSalary.getSalary()) {
+                findMinSalary = employees[i];
             }
         }
-        System.out.println("Самая маленькая зарплата - " + min);
-        System.out.println("Самая большая зарплата - " + max);
+        return findMinSalary;
     }
-    static void getAverageSalary(){
+    public static Employee findMaxSalary() {
+        Employee findMaxSalary = employees[0];
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getSalary() > findMaxSalary.getSalary()) {
+                findMaxSalary = employees[i];
+            }
+        }
+        return findMaxSalary;
+    }
+    public static String getFioEmployee(){
+        String[] listOfName = new String[employees.length];
+       String temp;
+        for (int i = 0; i < employees.length; i++){
+            temp = employees[i].getName();
+            listOfName[i] = temp;
+
+        }
+        return Arrays.toString(listOfName);
+    }
+    public static float getAverageSalary(){
         int count = 0;
         for (int i = 0; i < employees.length; i++){
-            count += employees[i].salary;
+            count += employees[i].getSalary();
         }
         count = count / employees.length;
-        System.out.println("Средняя зарплата - " + count);
+        return count;
     }
-    static void getFioEmployee(){
-        for (int i = 0; i < employees.length; i++){
-            System.out.println(employees[i].name);
-        }
-    }
+
 }

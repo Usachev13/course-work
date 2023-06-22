@@ -1,7 +1,7 @@
 public class Employee {
-    public String name;
+    private String name;
     private int department;
-    public int salary;
+    private int salary;
     private int id;
 
     public static int idCounter = 0;
@@ -14,6 +14,7 @@ public class Employee {
         idCounter++;
     }
     public String getName() {
+
         return this.name;
     }
 
@@ -24,7 +25,7 @@ public class Employee {
 
     public int getSalary() {
 
-        return this.getSalary();
+        return this.salary;
     }
 
     public void setName(String name){
@@ -41,5 +42,6 @@ public class Employee {
                 "Департамент - " + this.department + "; " +
                 "Зарплата - " + this.salary +"; ";
     }
+
 
 }
