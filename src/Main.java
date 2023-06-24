@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-import static java.util.Arrays.fill;
+
 
 public class Main {
     private static Employee[] employees = new Employee[10];
@@ -33,7 +33,7 @@ public class Main {
         System.out.println("Сумма всех зарплат : " + getSumSalary());
     }
     public static String getAllEmployee(){
-        Employee list[] = new Employee[employees.length];
+        Employee[] list = new Employee[employees.length];
         for (int i = 0; i < employees.length; i++){
             list[i] = employees[i];
         }
@@ -41,18 +41,18 @@ public class Main {
     }
     public static Employee findMinSalary() {
         Employee findMinSalary = employees[0];
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() < findMinSalary.getSalary()) {
-                findMinSalary = employees[i];
+        for (Employee employee : employees) {
+            if (employee.getSalary() < findMinSalary.getSalary()) {
+                findMinSalary = employee;
             }
         }
         return findMinSalary;
     }
     public static Employee findMaxSalary() {
         Employee findMaxSalary = employees[0];
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() > findMaxSalary.getSalary()) {
-                findMaxSalary = employees[i];
+        for (Employee employee : employees) {
+            if (employee.getSalary() > findMaxSalary.getSalary()) {
+                findMaxSalary = employee;
             }
         }
         return findMaxSalary;
@@ -66,14 +66,14 @@ public class Main {
         return Arrays.toString(listOfName);
     }
     public static float getAverageSalary(){
-        int count = 0;
+        int count;
         count = getSumSalary() / employees.length;
         return count;
     }
     public static int getSumSalary(){
         int count = 0;
-        for (int i = 0; i < employees.length; i++){
-            count += employees[i].getSalary();
+        for (Employee employee : employees) {
+            count += employee.getSalary();
         }
         return count;
     }
