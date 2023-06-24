@@ -30,6 +30,7 @@ public class Main {
         System.out.println("Cотрудник с максимальной зарплатой - " + findMaxSalary());
         System.out.println("Средняя зарплата по компании - " + getAverageSalary());
         System.out.println("Список всех имен в компании : " + getFioEmployee());
+        System.out.println("Сумма всех зарплат : " + getSumSalary());
     }
     public static String getAllEmployee(){
         Employee list[] = new Employee[employees.length];
@@ -58,20 +59,22 @@ public class Main {
     }
     public static String getFioEmployee(){
         String[] listOfName = new String[employees.length];
-       String temp;
         for (int i = 0; i < employees.length; i++){
-            temp = employees[i].getName();
-            listOfName[i] = temp;
+            listOfName[i] = employees[i].getName();
 
         }
         return Arrays.toString(listOfName);
     }
     public static float getAverageSalary(){
         int count = 0;
+        count = getSumSalary() / employees.length;
+        return count;
+    }
+    public static int getSumSalary(){
+        int count = 0;
         for (int i = 0; i < employees.length; i++){
             count += employees[i].getSalary();
         }
-        count = count / employees.length;
         return count;
     }
 
